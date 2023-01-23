@@ -2,6 +2,7 @@
   padding: 0;
   margin: 0px;
   block-size: auto;
+  font-family: Inter;
 }
 
 div {
@@ -15,6 +16,9 @@ div {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-image: url("/images/background/background1.svg");
+  background-position: center;
+  border-radius: 5px;
 }
 
 .enemyBox {
@@ -29,40 +33,60 @@ div {
   justify-content: center;
   width: 45%;
 }
-
 .statusEnemyBox {
-  background-color: azure;
+  background: rgba(145, 163, 190, 0.5);
   display: flex;
   flex-direction: column;
   width: 90%;
-  height: 60%;
+  height: 80%;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+  border-radius: 5px;
 }
 
-.nameAndLevelMonster {
+.nameBlockEnemy {
   display: flex;
-  width: 100%;
+  align-items: center;
+  width: 90%;
+  height: 15%;
+  margin: 0px;
+  background: #d5477a;
+  border-radius: 5px;
+}
+.levelBlockEnemy {
+  display: flex;
+  align-items: center;
+  width: 90%;
+  height: 15%;
+  margin: 0px;
+  background: #7285b3;
+  border-radius: 5px;
 }
 
-.levelMonster {
+.levelEnemy {
   display: flex;
   align-items: center;
 }
-.hpMonster {
+.hpEnemy {
   display: flex;
   align-items: center;
   width: 100%;
+  height: 20px;
+  margin: 5px;
+  margin-bottom: 0px;
+  margin-top: 0px;
 }
 
 .textHP {
   margin-right: -5px;
 }
 
-.hpBarMonster {
+.hpBarEnemy {
   background-color: crimson;
-  height: 15px;
+  height: 16px;
   width: 90%;
+  border-radius: 5px;
+  border: 1px solid rgb(23, 23, 23);
 }
 
 .avatarEnemy {
@@ -77,20 +101,130 @@ div {
   width: auto;
 }
 
-.heroBox {
-  width: 100%;
-  height: 35%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
 .battleLog {
   width: 100%;
   height: 10%;
 }
 
+/* Hero Space */
+
+.heroBox {
+  width: 100%;
+  height: 35%;
+  display: flex;
+}
+
+.statusHero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45%;
+}
+
+.statusHeroBox {
+  background: rgba(145, 163, 190, 0.5);
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  height: 80%;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 5px;
+}
+
+.nameBlockHero {
+  display: flex;
+  align-items: center;
+  width: 90%;
+  height: 15%;
+  margin: 0px;
+  background: #d5477a;
+  border-radius: 5px;
+}
+.levelBlockHero {
+  display: flex;
+  align-items: center;
+  width: 90%;
+  height: 15%;
+  margin: 0px;
+  background: #7285b3;
+  border-radius: 5px;
+}
+
+.levelHero {
+  display: flex;
+  align-items: center;
+}
+.hpHero {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 5px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  height: 20px;
+}
+
+.textHp {
+  margin-right: -5px;
+}
+
+.hpBarHero {
+  background-color: crimson;
+  height: 16px;
+  width: 90%;
+  border-radius: 5px;
+  border: 1px solid rgb(23, 23, 23);
+}
+
+.avatarHero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45%;
+}
+
+.imageHero {
+  height: 70%;
+  width: auto;
+}
+
+.xpHero {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 5px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  height: 20px;
+}
+
+.textXp {
+  margin-right: -5px;
+}
+
+.xpBarHero {
+  background-color: rgb(217, 178, 21);
+  height: 16px;
+  width: 90%;
+  border-radius: 5px;
+  border: 1px solid rgb(23, 23, 23);
+}
+
+/* Action Menu */
+
 .actionMenu {
   width: 100%;
   height: 20%;
+  display: flex;
+  align-items: center;
+  background-color: #d5dded;
+}
+
+.btn-attack {
+  width: 8rem;
+  height: 3rem;
+  margin: 10px;
+  background-color: #ea9456;
+  border-radius: 5px;
 }

@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@200;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,19 +18,24 @@
       <div class="enemyBox">
         <div class="statusEnemy">
           <div class="statusEnemyBox">
-            <div class="nameAndLevelMonster">
-              <div class="nameMonster">Monster Name</div>
-              <div class="levelMonster">10</div>
+            <div class="nameBlockEnemy">
+              <div class="nameEnemyText">Nome:</div>
+              <div class="nameEnemy">Draconite</div>
             </div>
-            <div class="hpMonster">
-              <div class="textHP">HP</div>
-              <div class="hpBarMonster"></div>
+            <div class="levelBlockEnemy">
+              <div class="levelEnemyText">Level:</div>
+              <div class="levelEnemy">15</div>
+            </div>
+
+            <div class="hpEnemy">
+              <div class="textHp">HP</div>
+              <div class="hpBarEnemy"></div>
             </div>
           </div>
         </div>
         <div class="avatarEnemy">
           <img
-            src="/images/personagens/vilain.png"
+            src="/images/personagens/vilain.svg"
             class="imageMonster"
             alt=""
           />
@@ -32,10 +43,34 @@
       </div>
       <div class="battleLog">Battle Log</div>
       <div class="heroBox">
-        <div class="statusHero">Status Hero</div>
-        <div class="avatarHero">Status</div>
+        <div class="avatarHero">
+          <img src="/images/personagens/heroi.svg" class="imageHero" alt="" />
+        </div>
+        <div class="statusHero">
+          <div class="statusHeroBox">
+            <div class="nameBlockHero">
+              <div class="nameHeroText">Nome:</div>
+              <div class="nameHero">Oliver</div>
+            </div>
+            <div class="levelBlockHero">
+              <div class="leveçHeroText">Level:</div>
+              <div class="levelHero">15</div>
+            </div>
+
+            <div class="hpHero">
+              <div class="textHp">HP</div>
+              <div class="hpBarHero"></div>
+            </div>
+            <div class="xpHero">
+              <div class="textXp">XP</div>
+              <div class="xpBarHero"></div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="actionMenu">Action Menu</div>
+      <div class="actionMenu">
+        <button class="btn btn-attack">Attack</button>
+      </div>
     </div>
 
     <script src="/js/monsters.js"></script>
