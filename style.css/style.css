@@ -264,11 +264,9 @@ div {
   justify-content: center;
   align-items: center;
 }
-
-.boardGameDisplayNone {
+#newGameDisplayNone {
   display: none;
 }
-
-#newGameDisplayNone {
+.boardGameDisplayNone {
   display: none;
 }
