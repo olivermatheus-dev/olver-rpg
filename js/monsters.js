@@ -246,7 +246,7 @@ class Monster {
   xpValueGenerator() {
     const rangeMult = [0.8, 0.9, 1, 1, 1, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6];
     let randomMult = rangeMult[Math.floor(Math.random() * rangeMult.length)];
-    let auxXpValueGenerator = (10 * this.levelMonster * randomMult) / 2;
+    let auxXpValueGenerator = (15 * this.levelMonster * randomMult) / 2;
     this.xpValue = auxXpValueGenerator;
   }
 }

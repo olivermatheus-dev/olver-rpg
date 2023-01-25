@@ -26,7 +26,6 @@ class Gameboard {
     this.xpAcumulado = 0;
     this.finalLevelHero = 0;
     this.quantityMonsterDefeat = 0;
-    this.currentMonster = {};
     this.backgroundBattle = 0;
   }
 
@@ -79,12 +78,20 @@ class Gameboard {
           "textBattleLog"
         )[0].innerHTML = `Escolha uma ação`;
       }, 2000);
+      this.quantityMonsterDefeat += 1;
+      this.xpAcumulado += monster.xpValue;
     }
     if (hero.hpHero <= 0) {
       document.getElementsByClassName("hpRealHero")[0].style.width = "0%";
       document.getElementsByClassName(
         "textBattleLog"
       )[0].innerHTML = `Você sucumbiu aos fortes inimigos, tente novamente`;
+      hero.heroAttack = 0;
+      monster.baseDamageMonster = 0;
+      setTimeout(() => {
+        addClass("boardGame", "hidden");
+        removeClass("defeatScreen", "hidden");
+      }, 2000);
     }
   }
 
@@ -175,7 +182,35 @@ class Gameboard {
     }
     // adicionar animação em CSS para subir de nível e uma informação no battle log
   }
-  hpRecovey() {}
+  hpRecovey() {
+    document.getElementsByClassName(
+      "textBattleLog"
+    )[0].innerHTML = `Você recuperou 30% de vida`;
+    document.getElementsByClassName("battleLog")[0].style.background =
+      "#44E5BF";
+    let currentHpBar =
+      document.getElementsByClassName("hpRealHero")[0].style.width;
+    currentHpBar = +currentHpBar.slice(0, 2) + 30;
+    if (currentHpBar > 99) {
+      currentHpBar = 99;
+    }
+    document.getElementsByClassName(
+      "hpRealHero"
+    )[0].style.width = `${currentHpBar}%`;
+    hero.hpHero = hero.hpHero + hero.hpHeroMax * 0.3;
+    if (hero.hpHero > hero.hpHeroMax) {
+      hero.hpHero = hero.hpHeroMax;
+    }
+
+    setTimeout(() => {
+      document.getElementsByClassName(
+        "textBattleLog"
+      )[0].innerHTML = `Escolha uma ação`;
+      document.getElementsByClassName("battleLog")[0].style.background =
+        "rgba(229, 229, 229, 0.5)";
+      this.monsterAction();
+    }, 2000);
+  }
 }
 const game = new Gameboard();
 window.addEventListener("load", () => {
@@ -187,6 +222,11 @@ window.addEventListener("load", () => {
   const newGameBtn = document.getElementsByClassName("newGame")[0];
   newGameBtn.addEventListener("click", () => {
     game.newGame();
+  });
+
+  const hpRecoveryBtn = document.getElementsByClassName("btn-hpRecovery")[0];
+  hpRecoveryBtn.addEventListener("click", () => {
+    game.hpRecovey();
   });
 });
 
