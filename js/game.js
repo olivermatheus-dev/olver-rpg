@@ -37,6 +37,7 @@ class Gameboard {
     // heroAux.startHero();
     // this.hero = heroAux;
     this.createMonster();
+    this.setupHeroInDisplay();
   }
 
   //   backgroundBattleGeneretor() {}
@@ -44,24 +45,26 @@ class Gameboard {
   createMonster() {
     monster.startMonster(hero.levelHero);
     console.log(monster);
-    this.setupInDisplay();
+    this.setupMonsterInDisplay();
     //Esse método irá apenas criar o monstro quando solicitado e irá reatribuir o valor
     //do constructor (usaremos o constructor em funções no css para atribuir informações)
     //no html (nome), level e etc.
     // deve invocar a função setupMonsterInDisplay() que por sua vez vai colocar o monstro na tela
   }
 
-  setupInDisplay() {
+  setupMonsterInDisplay() {
     // essa função irá configurar o background e o monstro novo no HTML
     document.getElementsByClassName("nameEnemy")[0].innerHTML =
       monster.nameMonster;
     document.getElementsByClassName("levelEnemy")[0].innerHTML =
       monster.levelMonster;
     document.getElementsByClassName("hpRealEnemy")[0].style.width = "99%";
-    document.getElementsByClassName("hpRealHero")[0].style.width = "99%";
     document.getElementsByClassName("classEnemy")[0].innerHTML =
       monster.typeMonster;
+  }
+  setupHeroInDisplay() {
     document.getElementsByClassName("nameHero")[0].innerHTML = hero.nameHero;
+    document.getElementsByClassName("hpRealHero")[0].style.width = "99%";
     document.getElementsByClassName("levelHero")[0].innerHTML = hero.levelHero;
   }
   //   statusCurrent() {
