@@ -248,7 +248,5 @@ class Monster {
     this.xpValue = auxXpValueGenerator;
   }
 }
-
+// ao instanciar o monstro aqui, não preciso de puxar ele para dentro do constructor
 const monster = new Monster();
-monster.startMonster(1);
-console.log(monster);

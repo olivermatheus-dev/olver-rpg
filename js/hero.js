@@ -30,3 +30,7 @@ class Hero {
     this.baseDamageHero = auxHeroDamage;
   }
 }
+
+const hero = new Hero("Guerreiro");
+hero.startHero();
+console.log(hero);

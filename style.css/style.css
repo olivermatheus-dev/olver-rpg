@@ -109,9 +109,27 @@ div {
   width: auto;
 }
 
-.battleLog {
+/* Battle Log Space */
+
+.battleLogBox {
   width: 100%;
-  height: 10%;
+  display: flex;
+  justify-content: right;
+}
+.battleLog {
+  background-color: rgba(229, 229, 229, 0.5);
+  width: 200px;
+  height: 70px;
+  border-radius: 5px;
+
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.textBattleLog {
+  font-size: 17px;
+  color: #080707;
 }
 
 /* Hero Space */
