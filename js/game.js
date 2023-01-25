@@ -58,6 +58,9 @@ class Gameboard {
     document.getElementsByClassName("levelEnemy")[0].innerHTML =
       monster.levelMonster;
     document.getElementsByClassName("hpRealEnemy")[0].style.width = "99%";
+    document.getElementsByClassName("hpRealHero")[0].style.width = "99%";
+    document.getElementsByClassName("classEnemy")[0].innerHTML =
+      monster.typeMonster;
     document.getElementsByClassName("nameHero")[0].innerHTML = hero.nameHero;
     document.getElementsByClassName("levelHero")[0].innerHTML = hero.levelHero;
   }
@@ -71,7 +74,24 @@ class Gameboard {
   //     // if personagem morreu, invocar defeat()
   //   }
 
-  monsterAction() {}
+  monsterAction() {
+    setTimeout(() => {
+      const rangeMult = [0.8, 0.9, 1, 1, 1, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 2];
+      let randomMult = rangeMult[Math.floor(Math.random() * rangeMult.length)];
+      let monsterDamagetoConvert = monster.baseDamageMonster * randomMult;
+      let monsterDamageConvert = (+monsterDamagetoConvert * 99) / hero.hpHero;
+      let hpHeroCurrentValue =
+        document.getElementsByClassName("hpRealHero")[0].style.width;
+      let hpHeroNewValue =
+        +hpHeroCurrentValue.slice(0, 2) - monsterDamageConvert;
+      document.getElementsByClassName(
+        "hpRealHero"
+      )[0].style.width = `${hpHeroNewValue}%`;
+      document.getElementsByClassName(
+        "textBattleLog"
+      )[0].innerHTML = `${hero.nameHero} recebeu ${monsterDamagetoConvert} de dano do inimigo`;
+    }, 2000);
+  }
 
   heroAttack() {
     const rangeMult = [0.8, 0.9, 1, 1, 1, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 2];
@@ -91,6 +111,7 @@ class Gameboard {
     document.getElementsByClassName(
       "textBattleLog"
     )[0].innerHTML = `${hero.nameHero} tirou ${heroDamagetoConvert} de dano do inimigo`;
+    this.monsterAction();
   }
 }
 const game = new Gameboard();
