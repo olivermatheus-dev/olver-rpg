@@ -4,7 +4,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@200;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@200;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
       rel="stylesheet"
     />
     <meta charset="UTF-8" />
@@ -14,27 +14,39 @@
     <title>RPG</title>
   </head>
   <body>
-    <div class="modular"></div>
-    <div class="boardGame">
+    <div class="modular">
+      <h1 class="titleRPG">RPG Adventure</h1>
+      <p class="subtitle">Escolha um nome para o seu personagem e divirta-se</p>
+      <form action="">
+        <div>
+          <label for="nome">Nome:</label>
+          <input type="text" class="nomeHero" value="" />
+        </div>
+      </form>
+      <button class="newGame">New Game</button>
+    </div>
+    <div class="boardGame hidden">
       <div class="enemyBox">
         <div class="statusEnemy">
-          <div class="statusEnemyBox">
-            <div class="nameBlockEnemy">
-              <div class="nameEnemyText">Nome:</div>
-              <div class="nameEnemy">Draconite</div>
+          <div class="statusEnemyBox border1">
+            <div class="nameBlockEnemy border1">
+              <div class="nameEnemyText marginRigthText">Nome:</div>
+              <div class="nameEnemy">Nome do Monstro</div>
             </div>
-            <div class="classBlockEnemy">
-              <div class="classEnemyText">Classe:</div>
-              <div class="classEnemy">Dragão</div>
+            <div class="classBlockEnemy border1">
+              <div class="classEnemyText marginRigthText">Classe:</div>
+              <div class="classEnemy">Classe do Monstro</div>
             </div>
-            <div class="levelBlockEnemy">
+            <div class="levelBlockEnemy border1">
               <div class="levelEnemyText">Level:</div>
               <div class="levelEnemy">15</div>
             </div>
 
             <div class="hpEnemy">
               <div class="textHp">HP</div>
-              <div class="hpBarEnemy"><div class="hpRealEnemy"></div></div>
+              <div class="hpBarEnemy border1">
+                <div class="hpRealEnemy"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -47,7 +59,7 @@
         </div>
       </div>
       <div class="battleLogBox">
-        <div class="battleLog">
+        <div class="battleLog border1">
           <p class="textBattleLog">Escolha uma ação</p>
         </div>
       </div>
@@ -56,29 +68,34 @@
           <img src="/images/personagens/heroi.svg" class="imageHero" alt="" />
         </div>
         <div class="statusHero">
-          <div class="statusHeroBox">
-            <div class="nameBlockHero">
-              <div class="nameHeroText">Nome:</div>
-              <div class="nameHero">Oliver</div>
+          <div class="statusHeroBox border1">
+            <div class="nameBlockHero border1">
+              <div class="nameHeroText marginRigthText">Nome:</div>
+              <div class="nameHero">Nome do Player</div>
             </div>
-            <div class="levelBlockHero">
-              <div class="leveçHeroText">Level:</div>
-              <div class="levelHero">15</div>
+            <div class="levelBlockHero border1">
+              <div class="levelHeroText">Level:</div>
+              <div class="levelHero">number</div>
             </div>
 
             <div class="hpHero">
               <div class="textHp">HP</div>
-              <div class="hpBarHero"><div class="hpRealHero"></div></div>
+              <div class="hpBarHero border1">
+                <div class="hpRealHero"></div>
+              </div>
             </div>
             <div class="xpHero">
               <div class="textXp">XP</div>
-              <div class="xpBarHero"><div class="xpRealHero"></div></div>
+              <div class="xpBarHero border1">
+                <div class="xpRealHero"></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div class="actionMenu">
         <button class="btn btn-attack">Attack</button>
+        <button class="btn btn-hpRecovery">Poção</button>
       </div>
     </div>
 

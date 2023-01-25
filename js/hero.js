@@ -19,20 +19,11 @@ class Hero {
     this.hpHeroMax = auxHeroHp;
   }
 
-  levelUpHero() {
-    this.levelHero += 1;
-    this.hpHeroGenerator();
-  }
-
   xpNeedToLevelUpGenerator() {
-    this.xpNeedToLevelUp = this.levelHero * 100;
+    this.xpNeedToLevelUp = this.levelHero * 50;
   }
   baseDamageHeroGenerator() {
     let auxHeroDamage = (30 * this.levelHero) / 2;
     this.baseDamageHero = auxHeroDamage;
   }
 }
-
-const hero = new Hero("Guerreiro");
-hero.startHero();
-console.log(hero);

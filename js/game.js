@@ -27,29 +27,20 @@ class Gameboard {
     this.finalLevelHero = 0;
     this.quantityMonsterDefeat = 0;
     this.currentMonster = {};
-    // this.hero = {};
     this.backgroundBattle = 0;
   }
 
   newGame() {
-    // aqui vai entrar a função de gerar o boardGame, vou criar uma classe no CSS para realizar essa alteração
-    // const heroAux = new Hero("Exemplo");
-    // heroAux.startHero();
-    // this.hero = heroAux;
     this.createMonster();
     this.setupHeroInDisplay();
+    removeClass("boardGame", "hidden");
+    addClass("modular", "hidden");
   }
-
-  //   backgroundBattleGeneretor() {}
 
   createMonster() {
     monster.startMonster(hero.levelHero);
     console.log(monster);
     this.setupMonsterInDisplay();
-    //Esse método irá apenas criar o monstro quando solicitado e irá reatribuir o valor
-    //do constructor (usaremos o constructor em funções no css para atribuir informações)
-    //no html (nome), level e etc.
-    // deve invocar a função setupMonsterInDisplay() que por sua vez vai colocar o monstro na tela
   }
 
   setupMonsterInDisplay() {
@@ -62,21 +53,26 @@ class Gameboard {
     document.getElementsByClassName("classEnemy")[0].innerHTML =
       monster.typeMonster;
   }
+
+  currentStatus() {
+    // deve atualizar toda vez que houver um ataque mostrando vida atual, ataque base e etc
+    // atualizar também quando subir de nível
+  }
+
   setupHeroInDisplay() {
     document.getElementsByClassName("nameHero")[0].innerHTML = hero.nameHero;
     document.getElementsByClassName("hpRealHero")[0].style.width = "99%";
+    document.getElementsByClassName("xpRealHero")[0].style.width = "0%";
     document.getElementsByClassName("levelHero")[0].innerHTML = hero.levelHero;
   }
-  //   statusCurrent() {
-  //     // Depois de cada ataque, essa função será invocada para atualizar os status dos
-  //     // personagens (monster e hero)
-  // //   }
+
   deathConference() {
     if (monster.hpMonster <= 0) {
       document.getElementsByClassName("hpRealEnemy")[0].style.width = "0%";
       document.getElementsByClassName(
         "textBattleLog"
       )[0].innerHTML = `Você venceu, estamos procurando um novo inimigo`;
+      this.xpUpHero();
       setTimeout(() => {
         this.createMonster();
         document.getElementsByClassName(
@@ -84,11 +80,19 @@ class Gameboard {
         )[0].innerHTML = `Escolha uma ação`;
       }, 2000);
     }
+    if (hero.hpHero <= 0) {
+      document.getElementsByClassName("hpRealHero")[0].style.width = "0%";
+      document.getElementsByClassName(
+        "textBattleLog"
+      )[0].innerHTML = `Você sucumbiu aos fortes inimigos, tente novamente`;
+    }
   }
 
   monsterAction() {
     setTimeout(() => {
-      const rangeMult = [0.8, 0.9, 1, 1, 1, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 2];
+      const rangeMult = [
+        0.7, 0.8, 0.9, 1, 1, 1, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 2, 3,
+      ];
       let randomMult = rangeMult[Math.floor(Math.random() * rangeMult.length)];
       let monsterDamagetoConvert = monster.baseDamageMonster * randomMult;
       hero.hpHero -= Math.round(monsterDamagetoConvert);
@@ -141,6 +145,37 @@ class Gameboard {
     this.deathConference();
     this.monsterAction();
   }
+  xpUpHero() {
+    // add aqui a regra de tres para calcular o xp
+    hero.currentXp += monster.xpValue;
+    let xpHeroGainConvert = (monster.xpValue * 100) / hero.xpNeedToLevelUp;
+    Math.round(xpHeroGainConvert);
+    console.log("valor a ser ganho de xp em %:" + xpHeroGainConvert);
+    let xpCurrentValue =
+      document.getElementsByClassName("xpRealHero")[0].style.width;
+    if (xpCurrentValue.length === 2) {
+      let xpNewValue = +xpCurrentValue.slice(0, 1) + xpHeroGainConvert;
+      document.getElementsByClassName(
+        "xpRealHero"
+      )[0].style.width = `${xpNewValue}%`;
+    } else {
+      let xpNewValue = +xpCurrentValue.slice(0, 2) + xpHeroGainConvert;
+      document.getElementsByClassName(
+        "xpRealHero"
+      )[0].style.width = `${xpNewValue}%`;
+    }
+    this.levelUp();
+  }
+  levelUp() {
+    if (hero.currentXp >= hero.xpNeedToLevelUp) {
+      hero.levelHero += 1;
+      hero.startHero();
+      document.getElementsByClassName("levelHero")[0].innerHTML =
+        hero.levelHero;
+    }
+    // adicionar animação em CSS para subir de nível e uma informação no battle log
+  }
+  hpRecovey() {}
 }
 const game = new Gameboard();
 window.addEventListener("load", () => {
@@ -148,4 +183,27 @@ window.addEventListener("load", () => {
   attackBtn.addEventListener("click", () => {
     game.heroAttack();
   });
+
+  const newGameBtn = document.getElementsByClassName("newGame")[0];
+  newGameBtn.addEventListener("click", () => {
+    game.newGame();
+  });
 });
+
+function addClass(classElement, classToAdd) {
+  document
+    .getElementsByClassName(`${classElement}`)[0]
+    .classList.add(`${classToAdd}`);
+}
+
+function removeClass(classElement, classToRemove) {
+  document
+    .getElementsByClassName(`${classElement}`)[0]
+    .classList.remove(`${classToRemove}`);
+}
+
+// abaixo para pegar o nome digitado e atribuir ao personagem
+
+const nameHeroSelect = document.getElementsByClassName("nomeHero")[0].value;
+const hero = new Hero(`${nameHeroSelect}`);
+hero.startHero();

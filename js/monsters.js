@@ -215,13 +215,13 @@ class Monster {
     }
   }
   levelGenerator(levelHero) {
-    if (levelHero > 4) {
-      const rangeMult = [-3, -2, -1, 0, 0, 0, 1, 2, 3];
+    if (levelHero > 10) {
+      const rangeMult = [-3, -2, -1, 0, 0, 0, 1, 2];
       let randomMult = rangeMult[Math.floor(Math.random() * rangeMult.length)];
       let monsterLevel = levelHero + randomMult;
       this.levelMonster = monsterLevel;
     } else {
-      const rangeMult = [0, 0, 0, 1, 2];
+      const rangeMult = [0, 0, 0, 1];
       let randomMult = rangeMult[Math.floor(Math.random() * rangeMult.length)];
       let monsterLevel = levelHero + randomMult;
       this.levelMonster = monsterLevel;
@@ -239,7 +239,7 @@ class Monster {
   baseDamageMonsterGenerator() {
     const rangeMult = [0.8, 0.9, 1, 1, 1, 1, 1.1, 1.2];
     let randomMult = rangeMult[Math.floor(Math.random() * rangeMult.length)];
-    let auxMonsterDamage = (20 * this.levelMonster * randomMult) / 2;
+    let auxMonsterDamage = (15 * this.levelMonster * randomMult) / 2;
     this.baseDamageMonster = auxMonsterDamage;
   }
 
