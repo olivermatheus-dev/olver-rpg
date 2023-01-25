@@ -127,7 +127,7 @@ div {
   justify-content: right;
 }
 .battleLog {
-  background-color: rgba(229, 229, 229, 0.5);
+  background: rgba(229, 229, 229, 0.5);
   width: 200px;
   height: 70px;
   border-radius: 5px;

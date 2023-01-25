@@ -3,6 +3,7 @@ class Hero {
     this.nameHero = name;
     this.levelHero = 1;
     this.hpHero = 0;
+    this.hpHeroMax = 0;
     this.baseDamageHero = 0;
     this.currentXp = 0;
     this.xpNeedToLevelUp = 0;
@@ -15,6 +16,7 @@ class Hero {
   hpHeroGenerator() {
     let auxHeroHp = (120 * this.levelHero) / 2;
     this.hpHero = auxHeroHp;
+    this.hpHeroMax = auxHeroHp;
   }
 
   levelUpHero() {

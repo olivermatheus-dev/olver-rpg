@@ -68,18 +68,29 @@ class Gameboard {
   //     // Depois de cada ataque, essa função será invocada para atualizar os status dos
   //     // personagens (monster e hero)
   // //   }
-  //   deathConference() {
-  //     // conferir se o personagem morreu ou se o monstro morreu, essa função será
-  //     // invocada ao fim de cada ataque. if monstro morreu, invocar a criação de um novo
-  //     // if personagem morreu, invocar defeat()
-  //   }
+  deathConference() {
+    if (monster.hpMonster <= 0) {
+      document.getElementsByClassName("hpRealEnemy")[0].style.width = "0%";
+      document.getElementsByClassName(
+        "textBattleLog"
+      )[0].innerHTML = `Você venceu, estamos procurando um novo inimigo`;
+      setTimeout(() => {
+        this.createMonster();
+        document.getElementsByClassName(
+          "textBattleLog"
+        )[0].innerHTML = `Escolha uma ação`;
+      }, 2000);
+    }
+  }
 
   monsterAction() {
     setTimeout(() => {
       const rangeMult = [0.8, 0.9, 1, 1, 1, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 2];
       let randomMult = rangeMult[Math.floor(Math.random() * rangeMult.length)];
       let monsterDamagetoConvert = monster.baseDamageMonster * randomMult;
-      let monsterDamageConvert = (+monsterDamagetoConvert * 99) / hero.hpHero;
+      hero.hpHero -= Math.round(monsterDamagetoConvert);
+      let monsterDamageConvert =
+        (+monsterDamagetoConvert * 99) / hero.hpHeroMax;
       let hpHeroCurrentValue =
         document.getElementsByClassName("hpRealHero")[0].style.width;
       let hpHeroNewValue =
@@ -87,19 +98,31 @@ class Gameboard {
       document.getElementsByClassName(
         "hpRealHero"
       )[0].style.width = `${hpHeroNewValue}%`;
+      document.getElementsByClassName("battleLog")[0].style.background =
+        "#d5477a";
       document.getElementsByClassName(
         "textBattleLog"
       )[0].innerHTML = `${hero.nameHero} recebeu ${monsterDamagetoConvert} de dano do inimigo`;
     }, 2000);
+    setTimeout(() => {
+      document.getElementsByClassName(
+        "textBattleLog"
+      )[0].innerHTML = `Escolha uma ação`;
+      document.getElementsByClassName("battleLog")[0].style.background =
+        "rgba(229, 229, 229, 0.5)";
+      this.deathConference();
+    }, 4000);
   }
 
   heroAttack() {
     const rangeMult = [0.8, 0.9, 1, 1, 1, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 2];
     let randomMult = rangeMult[Math.floor(Math.random() * rangeMult.length)];
     let heroDamagetoConvert = hero.baseDamageHero * randomMult;
-    // console.log("Ataque do herói após multiplicador:" + heroDamagetoConvert);
-    let heroDamageConvert = (+heroDamagetoConvert * 99) / monster.hpMonster;
-    // console.log("Cálculo de porcentagem a ser tirado:" + heroDamageConvert);
+    monster.hpMonster -= Math.round(heroDamagetoConvert);
+    console.log("Ataque do herói após multiplicador:" + heroDamagetoConvert);
+    let heroDamageConvert = (+heroDamagetoConvert * 99) / monster.hpMonsterMax;
+    Math.round(heroDamageConvert); // solução
+    console.log("Cálculo de porcentagem a ser tirado:" + heroDamageConvert);
     let hpEnemyCurrentValue =
       document.getElementsByClassName("hpRealEnemy")[0].style.width;
     let hpEnemyNewValue = +hpEnemyCurrentValue.slice(0, 2) - heroDamageConvert;
@@ -107,10 +130,12 @@ class Gameboard {
     document.getElementsByClassName(
       "hpRealEnemy"
     )[0].style.width = `${hpEnemyNewValue}%`;
-
+    document.getElementsByClassName("battleLog")[0].style.background =
+      "#44ABE5";
     document.getElementsByClassName(
       "textBattleLog"
     )[0].innerHTML = `${hero.nameHero} tirou ${heroDamagetoConvert} de dano do inimigo`;
+    this.deathConference();
     this.monsterAction();
   }
 }

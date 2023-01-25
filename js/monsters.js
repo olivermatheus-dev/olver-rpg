@@ -11,6 +11,7 @@ class Monster {
     this.nameMonster = 0;
     this.levelMonster = 0;
     this.hpMonster = 0;
+    this.hpMonsterMax = 0;
     this.baseDamageMonster = 0;
     this.xpValue = 0;
     this.imageMonster = 0;
@@ -232,6 +233,7 @@ class Monster {
     let randomMult = rangeMult[Math.floor(Math.random() * rangeMult.length)];
     let auxMonsterHp = (100 * this.levelMonster * randomMult) / 2;
     this.hpMonster = auxMonsterHp;
+    this.hpMonsterMax = auxMonsterHp;
   }
 
   baseDamageMonsterGenerator() {
