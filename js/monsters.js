@@ -29,15 +29,7 @@ class Monster {
   typeMonsterGenerator() {
     /* aqui teremos uma array de tipos de monstros, o objetivo dessa
     função é apenas sortear um typeMonster aleatório e reatribuir ao this.typeMonster*/
-    const typesMonsters = [
-      "Dragon",
-      "Orc",
-      "Druid",
-      "Thief",
-      "Elf",
-      "Witcher",
-      "Hunter",
-    ];
+    const typesMonsters = ["Orc", "Druid", "Thief", "Elf", "Witcher", "Hunter"];
     let randomElement =
       typesMonsters[Math.floor(Math.random() * typesMonsters.length)];
 
@@ -100,6 +92,7 @@ class Monster {
       let randomElement = orcNames[Math.floor(Math.random() * orcNames.length)];
 
       this.nameMonster = randomElement;
+      this.imageMonster = "orc1.svg";
     }
     // Druid
     if (this.typeMonster === "Druid") {
@@ -125,6 +118,7 @@ class Monster {
         druidNames[Math.floor(Math.random() * druidNames.length)];
 
       this.nameMonster = randomElement;
+      this.imageMonster = "druid1.svg";
     }
     //Thief
     if (this.typeMonster === "Thief") {
@@ -140,7 +134,7 @@ class Monster {
 
       let randomElement =
         thiefNames[Math.floor(Math.random() * thiefNames.length)];
-
+      this.imageMonster = "thief1.svg";
       this.nameMonster = randomElement;
     }
     //Elf
@@ -170,7 +164,7 @@ class Monster {
         "Farric",
       ];
       let randomElement = elfNames[Math.floor(Math.random() * elfNames.length)];
-
+      this.imageMonster = "elf1.svg";
       this.nameMonster = randomElement;
     }
     //Witcher
@@ -190,7 +184,7 @@ class Monster {
       ];
       let randomElement =
         witcherNames[Math.floor(Math.random() * witcherNames.length)];
-
+      this.imageMonster = "witcher1.svg";
       this.nameMonster = randomElement;
     }
     //Hunter
@@ -210,7 +204,7 @@ class Monster {
       ];
       let randomElement =
         hunterNames[Math.floor(Math.random() * hunterNames.length)];
-
+      this.imageMonster = "hunter1.svg";
       this.nameMonster = randomElement;
     }
   }

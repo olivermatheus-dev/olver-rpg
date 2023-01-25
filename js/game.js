@@ -1,24 +1,3 @@
-// const hero1 = new Hero("Oliver");
-// const monster1 = new Monster();
-
-// console.log(hero1);
-// console.log(monster1.startMonster(1));
-
-// function attack() {
-//   let hpEnemyValue =
-//     document.getElementsByClassName("hpRealEnemy")[0].style.width;
-//   if (!hpEnemyValue) {
-//     hpEnemyValue = "99%";
-//   }
-//   let hpEnemyValueNumber = +hpEnemyValue.slice(0, 2);
-//   let attackHero = 10;
-//   hpEnemyValueNumber -= attackHero;
-//   hpEnemyValue = `${hpEnemyValueNumber}%`;
-//   console.log(hpEnemyValue);
-//   document.getElementsByClassName("hpRealEnemy")[0].style.width = hpEnemyValue;
-//   return;
-// }
-
 // Jogo abaixo
 
 class Gameboard {
@@ -44,6 +23,11 @@ class Gameboard {
 
   setupMonsterInDisplay() {
     // essa função irá configurar o background e o monstro novo no HTML
+
+    document.getElementsByClassName(
+      "imageMonster"
+    )[0].src = `./images/personagens/monsters/${monster.imageMonster}`;
+
     document.getElementsByClassName("nameEnemy")[0].innerHTML =
       monster.nameMonster;
     document.getElementsByClassName("levelEnemy")[0].innerHTML =
