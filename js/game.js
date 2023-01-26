@@ -6,6 +6,7 @@ class Gameboard {
     this.finalLevelHero = 0;
     this.quantityMonsterDefeat = 0;
     this.backgroundBattle = 0;
+    this.totalPoints = 0;
   }
 
   newGame() {
@@ -77,11 +78,22 @@ class Gameboard {
       )[0].innerHTML = `Você sucumbiu aos fortes inimigos, tente novamente`;
       hero.heroAttack = 0;
       monster.baseDamageMonster = 0;
+      this.valuePoints();
       setTimeout(() => {
         addClass("boardGame", "hidden");
         removeClass("defeatScreen", "hidden");
+        document.getElementsByClassName(
+          "valuePoints"
+        )[0].innerHTML = `${this.totalPoints}`;
       }, 2000);
     }
+  }
+
+  valuePoints() {
+    this.totalPoints =
+      this.xpAcumulado * 10 +
+      this.quantityMonsterDefeat * 100 +
+      hero.levelHero * 100;
   }
 
   monsterAction() {
