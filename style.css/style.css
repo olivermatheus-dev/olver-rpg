@@ -4,6 +4,7 @@
   block-size: auto;
   font-family: Inter;
   font-family: Lora;
+  -webkit-appearance: none;
 }
 
 div {

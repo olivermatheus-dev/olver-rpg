@@ -215,7 +215,7 @@ class Monster {
       let monsterLevel = levelHero + randomMult;
       this.levelMonster = monsterLevel;
     } else {
-      const rangeMult = [0, 0, 0, 1];
+      const rangeMult = [0, 0, 0, 0];
       let randomMult = rangeMult[Math.floor(Math.random() * rangeMult.length)];
       let monsterLevel = levelHero + randomMult;
       this.levelMonster = monsterLevel;
@@ -240,7 +240,7 @@ class Monster {
   xpValueGenerator() {
     const rangeMult = [0.8, 0.9, 1, 1, 1, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6];
     let randomMult = rangeMult[Math.floor(Math.random() * rangeMult.length)];
-    let auxXpValueGenerator = (15 * this.levelMonster * randomMult) / 2;
+    let auxXpValueGenerator = (20 * this.levelMonster * randomMult) / 2;
     this.xpValue = auxXpValueGenerator;
   }
 }
