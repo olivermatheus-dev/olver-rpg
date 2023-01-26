@@ -2,8 +2,7 @@
   padding: 0;
   margin: 0px;
   block-size: auto;
-  font-family: "Inter";
-  font-family: "Lora";
+  font-family: "Lora", "Inter", sans-serif;
 }
 
 div {
