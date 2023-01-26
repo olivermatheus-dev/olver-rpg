@@ -61,10 +61,15 @@ class Gameboard {
         document.getElementsByClassName(
           "textBattleLog"
         )[0].innerHTML = `Escolha uma ação`;
-      }, 2000);
+      }, 3000);
       this.quantityMonsterDefeat += 1;
       this.xpAcumulado += monster.xpValue;
+    } else {
+      this.monsterAction();
     }
+  }
+
+  deathConferenceHero() {
     if (hero.hpHero <= 0) {
       document.getElementsByClassName("hpRealHero")[0].style.width = "0%";
       document.getElementsByClassName(
@@ -98,18 +103,23 @@ class Gameboard {
       )[0].style.width = `${hpHeroNewValue}%`;
       document.getElementsByClassName("battleLog")[0].style.background =
         "#d5477a";
-      document.getElementsByClassName(
-        "textBattleLog"
-      )[0].innerHTML = `${hero.nameHero} recebeu ${monsterDamagetoConvert} de dano do inimigo`;
+      document.getElementsByClassName("textBattleLog")[0].innerHTML = `${
+        hero.nameHero
+      } recebeu ${Math.floor(monsterDamagetoConvert)} de dano do inimigo`;
+      addClass("imageMonster", "attackAnimationMonster");
+      setTimeout(() => {
+        removeClass("imageMonster", "attackAnimationMonster");
+      }, 400);
     }, 2000);
+
     setTimeout(() => {
       document.getElementsByClassName(
         "textBattleLog"
       )[0].innerHTML = `Escolha uma ação`;
       document.getElementsByClassName("battleLog")[0].style.background =
         "rgba(229, 229, 229, 0.5)";
-      this.deathConference();
     }, 4000);
+    this.deathConferenceHero();
   }
 
   heroAttack() {
@@ -130,11 +140,14 @@ class Gameboard {
     )[0].style.width = `${hpEnemyNewValue}%`;
     document.getElementsByClassName("battleLog")[0].style.background =
       "#44ABE5";
-    document.getElementsByClassName(
-      "textBattleLog"
-    )[0].innerHTML = `${hero.nameHero} tirou ${heroDamagetoConvert} de dano do inimigo`;
+    document.getElementsByClassName("textBattleLog")[0].innerHTML = `${
+      hero.nameHero
+    } tirou ${Math.floor(heroDamagetoConvert)} de dano do inimigo`;
     this.deathConference();
-    this.monsterAction();
+    addClass("imageHero", "attackAnimationHero");
+    setTimeout(() => {
+      removeClass("imageHero", "attackAnimationHero");
+    }, 400);
   }
   xpUpHero() {
     // add aqui a regra de tres para calcular o xp
@@ -193,7 +206,7 @@ class Gameboard {
       document.getElementsByClassName("battleLog")[0].style.background =
         "rgba(229, 229, 229, 0.5)";
       this.monsterAction();
-    }, 2000);
+    }, 3000);
   }
 }
 const game = new Gameboard();
