@@ -10,6 +10,10 @@ class Gameboard {
   }
 
   newGame() {
+    // const nameHeroSelect = document.getElementsByClassName("nomeHero")[0].value;
+    // const hero = new Hero(`${nameHeroSelect}`);
+    // console.log(nameHeroSelect);
+    // hero.startHero(nameHeroSelect.innerHTML);
     this.createMonster();
     this.setupHeroInDisplay();
     removeClass("boardGame", "hidden");
@@ -18,7 +22,7 @@ class Gameboard {
 
   createMonster() {
     monster.startMonster(hero.levelHero);
-    console.log(monster);
+
     this.setupMonsterInDisplay();
   }
 
@@ -44,10 +48,14 @@ class Gameboard {
   }
 
   setupHeroInDisplay() {
-    document.getElementsByClassName("nameHero")[0].innerHTML = hero.nameHero;
+    document.getElementsByClassName("nameHero")[0].innerHTML =
+      document.getElementsByClassName("nomeHero")[0].value;
     document.getElementsByClassName("hpRealHero")[0].style.width = "99%";
     document.getElementsByClassName("xpRealHero")[0].style.width = "0%";
     document.getElementsByClassName("levelHero")[0].innerHTML = hero.levelHero;
+    document.getElementsByClassName(
+      "hpRealHeroText"
+    )[0].innerHTML = `${hero.hpHero}/${hero.hpHeroMax}`;
   }
 
   deathConference() {
@@ -132,9 +140,24 @@ class Gameboard {
         "rgba(229, 229, 229, 0.5)";
     }, 4000);
     this.deathConferenceHero();
+    document.getElementsByClassName(
+      "hpRealHeroText"
+    )[0].innerHTML = `${hero.hpHero}/${hero.hpHeroMax}`;
   }
 
   heroAttack() {
+    // tentativa de desabilitar botão
+    document
+      .getElementsByClassName(`eventListenerAttack`)[0]
+      .classList.add(`hidden`);
+    document.getElementsByClassName(`btn-attack`)[1].classList.remove(`hidden`);
+    setTimeout(() => {
+      document
+        .getElementsByClassName(`eventListenerAttack`)[0]
+        .classList.remove(`hidden`);
+      document.getElementsByClassName(`btn-attack`)[1].classList.add(`hidden`);
+    }, 2000);
+
     const rangeMult = [0.8, 0.9, 1, 1, 1, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 2];
     let randomMult = rangeMult[Math.floor(Math.random() * rangeMult.length)];
     let heroDamagetoConvert = hero.baseDamageHero * randomMult;
@@ -224,8 +247,9 @@ class Gameboard {
   }
 }
 const game = new Gameboard();
+
 window.addEventListener("load", () => {
-  const attackBtn = document.getElementsByClassName("btn-attack")[0];
+  const attackBtn = document.getElementsByClassName("eventListenerAttack")[0];
   attackBtn.addEventListener("click", () => {
     game.heroAttack();
   });
@@ -235,7 +259,9 @@ window.addEventListener("load", () => {
     game.newGame();
   });
 
-  const hpRecoveryBtn = document.getElementsByClassName("btn-hpRecovery")[0];
+  const hpRecoveryBtn = document.getElementsByClassName(
+    "eventListenerHpRecovery"
+  )[0];
   hpRecoveryBtn.addEventListener("click", () => {
     game.hpRecovey();
   });

@@ -92,6 +92,7 @@
               <div class="textHp">HP</div>
               <div class="hpBarHero border1">
                 <div class="hpRealHero"></div>
+                <div class="hpRealHeroText"></div>
               </div>
             </div>
             <div class="xpHero">
@@ -104,8 +105,11 @@
         </div>
       </div>
       <div class="actionMenu">
-        <button class="btn btn-attack">Attack</button>
-        <button class="btn btn-hpRecovery">Poção</button>
+        <button class="btn btn-attack eventListenerAttack">Attack</button>
+        <button class="btn btn-attack hidden">Attack</button>
+        <button class="btn btn-hpRecovery eventListenerHpRecovery">
+          Poção
+        </button>
       </div>
     </div>
 
