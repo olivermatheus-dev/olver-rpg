@@ -122,7 +122,7 @@ class Gameboard {
       setTimeout(() => {
         removeClass("imageMonster", "attackAnimationMonster");
       }, 400);
-    }, 2000);
+    }, 1000);
 
     setTimeout(() => {
       document.getElementsByClassName(
@@ -162,20 +162,21 @@ class Gameboard {
     }, 400);
   }
   xpUpHero() {
-    // add aqui a regra de tres para calcular o xp
     hero.currentXp += monster.xpValue;
     let xpHeroGainConvert = (monster.xpValue * 100) / hero.xpNeedToLevelUp;
     Math.round(xpHeroGainConvert);
-    console.log("valor a ser ganho de xp em %:" + xpHeroGainConvert);
     let xpCurrentValue =
       document.getElementsByClassName("xpRealHero")[0].style.width;
-    if (xpCurrentValue.length === 2) {
-      let xpNewValue = +xpCurrentValue.slice(0, 1) + xpHeroGainConvert;
+
+    if (xpCurrentValue.length === 3) {
+      let xpNewValue = +xpCurrentValue.slice(0, 2) + xpHeroGainConvert;
       document.getElementsByClassName(
         "xpRealHero"
       )[0].style.width = `${xpNewValue}%`;
-    } else {
-      let xpNewValue = +xpCurrentValue.slice(0, 2) + xpHeroGainConvert;
+    }
+
+    if (xpCurrentValue.length === 2) {
+      let xpNewValue = +xpCurrentValue.slice(0, 1) + xpHeroGainConvert;
       document.getElementsByClassName(
         "xpRealHero"
       )[0].style.width = `${xpNewValue}%`;
@@ -188,6 +189,7 @@ class Gameboard {
       hero.startHero();
       document.getElementsByClassName("levelHero")[0].innerHTML =
         hero.levelHero;
+      document.getElementsByClassName("xpRealHero")[0].style.width = "0%";
     }
     // adicionar animação em CSS para subir de nível e uma informação no battle log
   }
@@ -218,7 +220,7 @@ class Gameboard {
       document.getElementsByClassName("battleLog")[0].style.background =
         "rgba(229, 229, 229, 0.5)";
       this.monsterAction();
-    }, 3000);
+    }, 1500);
   }
 }
 const game = new Gameboard();
