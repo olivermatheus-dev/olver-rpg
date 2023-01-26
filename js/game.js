@@ -217,6 +217,21 @@ class Gameboard {
     // adicionar animação em CSS para subir de nível e uma informação no battle log
   }
   hpRecovey() {
+    document
+      .getElementsByClassName(`eventListenerHpRecovery`)[0]
+      .classList.add(`hidden`);
+    document
+      .getElementsByClassName(`btn-hpRecovery`)[1]
+      .classList.remove(`hidden`);
+    setTimeout(() => {
+      document
+        .getElementsByClassName(`eventListenerHpRecovery`)[0]
+        .classList.remove(`hidden`);
+      document
+        .getElementsByClassName(`btn-hpRecovery`)[1]
+        .classList.add(`hidden`);
+    }, 2000);
+
     document.getElementsByClassName(
       "textBattleLog"
     )[0].innerHTML = `Você recuperou 30% de vida`;
