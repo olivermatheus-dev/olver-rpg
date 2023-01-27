@@ -125,7 +125,7 @@ class Gameboard {
         "#d5477a";
       document.getElementsByClassName("textBattleLog")[0].innerHTML = `${
         hero.nameHero
-      } recebeu ${Math.floor(monsterDamagetoConvert)} de dano do inimigo`;
+      } Recebeu ${Math.floor(monsterDamagetoConvert)} de dano do inimigo`;
       addClass("imageMonster", "attackAnimationMonster");
       setTimeout(() => {
         removeClass("imageMonster", "attackAnimationMonster");
@@ -177,7 +177,7 @@ class Gameboard {
       "#44ABE5";
     document.getElementsByClassName("textBattleLog")[0].innerHTML = `${
       hero.nameHero
-    } tirou ${Math.floor(heroDamagetoConvert)} de dano do inimigo`;
+    } Tirou ${Math.floor(heroDamagetoConvert)} de dano do inimigo`;
     this.deathConference();
     addClass("imageHero", "attackAnimationHero");
     setTimeout(() => {

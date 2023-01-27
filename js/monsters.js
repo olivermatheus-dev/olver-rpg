@@ -29,7 +29,20 @@ class Monster {
   typeMonsterGenerator() {
     /* aqui teremos uma array de tipos de monstros, o objetivo dessa
     função é apenas sortear um typeMonster aleatório e reatribuir ao this.typeMonster*/
-    const typesMonsters = ["Orc", "Druid", "Thief", "Elf", "Witcher", "Hunter"];
+    const typesMonsters = [
+      "Draco",
+      "Orc",
+      "Druid",
+      "Thief",
+      "Elf",
+      "Witcher",
+      "Hunter",
+      "Monk",
+      "Scientist",
+      "Explorer",
+      "Samurai",
+      "Paladin",
+    ];
     let randomElement =
       typesMonsters[Math.floor(Math.random() * typesMonsters.length)];
 
@@ -38,7 +51,7 @@ class Monster {
 
   nameGenerator() {
     // Dragon
-    if (this.typeMonster === "Dragon") {
+    if (this.typeMonster === "Draco") {
       const dragonNames = [
         "Arman",
         "Dagahra",
@@ -64,6 +77,7 @@ class Monster {
         dragonNames[Math.floor(Math.random() * dragonNames.length)];
 
       this.nameMonster = randomElement;
+      this.imageMonster = "draco1.svg";
     }
     // Orc
     if (this.typeMonster === "Orc") {
@@ -92,7 +106,10 @@ class Monster {
       let randomElement = orcNames[Math.floor(Math.random() * orcNames.length)];
 
       this.nameMonster = randomElement;
-      this.imageMonster = "orc1.svg";
+      const typesMonsters = [1, 2];
+      let randomNumber =
+        typesMonsters[Math.floor(Math.random() * typesMonsters.length)];
+      this.imageMonster = `orc${randomNumber}.svg`;
     }
     // Druid
     if (this.typeMonster === "Druid") {
@@ -184,8 +201,13 @@ class Monster {
       ];
       let randomElement =
         witcherNames[Math.floor(Math.random() * witcherNames.length)];
-      this.imageMonster = "witcher1.svg";
+
       this.nameMonster = randomElement;
+
+      const typesMonsters = [1, 2, 3, 4, 5];
+      let randomNumber =
+        typesMonsters[Math.floor(Math.random() * typesMonsters.length)];
+      this.imageMonster = `witcher${randomNumber}.svg`;
     }
     //Hunter
     if (this.typeMonster === "Hunter") {
@@ -205,6 +227,106 @@ class Monster {
       let randomElement =
         hunterNames[Math.floor(Math.random() * hunterNames.length)];
       this.imageMonster = "hunter1.svg";
+      this.nameMonster = randomElement;
+    }
+    //Monk
+    if (this.typeMonster === "Monk") {
+      const hunterNames = [
+        "Abhaya",
+        "Aishi",
+        "Anzan",
+        "Bankei",
+        "Bodhin",
+        "Chen-chio",
+        "Dae Shim",
+        "Daiki",
+        "Danan",
+        "Eisho",
+        "Fudoki",
+      ];
+      let randomElement =
+        hunterNames[Math.floor(Math.random() * hunterNames.length)];
+      this.imageMonster = "monk1.svg";
+      this.nameMonster = randomElement;
+    }
+    //Scientist
+    if (this.typeMonster === "Scientist") {
+      const hunterNames = [
+        "Dr. Grief",
+        "Prof. Aberrant",
+        "Dr. Jeebies",
+        "Dr. Ools",
+        "Dr. Crow",
+        "Dr. Jitters",
+        "Dr. Jacket",
+        "Dr. Clockwork",
+        "Dr. Grim",
+        "Dr. Hinks",
+        "Dr. Venom",
+      ];
+      let randomElement =
+        hunterNames[Math.floor(Math.random() * hunterNames.length)];
+      this.imageMonster = "scientist1.svg";
+      this.nameMonster = randomElement;
+    }
+    //Explorer
+    if (this.typeMonster === "Explorer") {
+      const hunterNames = [
+        "James",
+        "Robert",
+        "John Kart",
+        "Michael Stan",
+        "David Helis",
+        "William Most",
+        "Richard Hasm",
+        "Joseph Pots",
+        "Thomas Hanks",
+        "Matthew",
+        "Anthony",
+      ];
+      let randomElement =
+        hunterNames[Math.floor(Math.random() * hunterNames.length)];
+      this.imageMonster = "explorer1.svg";
+      this.nameMonster = randomElement;
+    }
+    //Samurai
+    if (this.typeMonster === "Samurai") {
+      const hunterNames = [
+        "Asakura",
+        "Imagawa",
+        "Kenji",
+        "Kusunoki",
+        "Minamoto",
+        "Moriyama",
+        "Rinoie",
+        "Saigo",
+        "Tsunari",
+        "Yasuke",
+        "Yasumi",
+      ];
+      let randomElement =
+        hunterNames[Math.floor(Math.random() * hunterNames.length)];
+      this.imageMonster = "samurai1.svg";
+      this.nameMonster = randomElement;
+    }
+    //Paladin
+    if (this.typeMonster === "Paladin") {
+      const hunterNames = [
+        "Randal",
+        "Athelardus",
+        "Wexford",
+        "Tyrael",
+        "Baratheus",
+        "Magroth",
+        "Harthal",
+        "Guillemot",
+        "Grummner",
+        "Evelear",
+        "Darian",
+      ];
+      let randomElement =
+        hunterNames[Math.floor(Math.random() * hunterNames.length)];
+      this.imageMonster = "paladin1.svg";
       this.nameMonster = randomElement;
     }
   }

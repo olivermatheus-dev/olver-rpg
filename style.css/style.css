@@ -3,6 +3,7 @@
   margin: 0px;
   block-size: auto;
   font-family: "Lora", "Inter", sans-serif;
+  cursor: url(../images/cursor/cursor1.svg), default;
 }
 
 div {
@@ -12,11 +13,23 @@ div {
 
 body {
   background-color: #7285b3;
+  cursor: url(../images/cursor/cursor1.svg), default;
+}
+
+.backgroundScreen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  block-size: auto;
 }
 
 .boardGame {
   width: 94%;
-  width: auto;
+  max-width: 700px;
   height: 650px;
   display: flex;
   flex-direction: column;
@@ -59,6 +72,10 @@ body {
   background: #d5477a;
   border-radius: 5px;
 }
+
+.nameEnemy {
+  margin-left: 3px;
+}
 .marginRigthText {
   margin-right: 0px;
 }
@@ -71,6 +88,10 @@ body {
   margin: 0px;
   background: #47d5a3;
   border-radius: 5px;
+}
+
+.classEnemy {
+  margin-left: 3px;
 }
 
 .levelBlockEnemy {
@@ -124,7 +145,7 @@ body {
 }
 
 .imageMonster {
-  height: 70%;
+  height: 90%;
   width: auto;
 }
 
@@ -186,6 +207,11 @@ body {
   background: #d5477a;
   border-radius: 5px;
 }
+
+.nameHero {
+  margin-left: 3px;
+}
+
 .levelBlockHero {
   display: flex;
   align-items: center;
@@ -230,11 +256,10 @@ body {
   padding: 0;
   justify-content: center;
   align-items: center;
-  /* z-index: 10; */
+  z-index: 10;
 }
 
 .hpRealHeroText {
-  /* position: relative; */
   display: flex;
   height: 16px;
   width: 100%;
@@ -242,7 +267,8 @@ body {
   padding: 0;
   justify-content: center;
   align-items: center;
-  /* z-index: 100; */
+  z-index: 200;
+  position: absolute;
 }
 
 .avatarHero {
@@ -253,7 +279,7 @@ body {
 }
 
 .imageHero {
-  height: 70%;
+  height: 90%;
   width: auto;
 }
 
@@ -336,8 +362,13 @@ body {
   align-items: center;
   flex-direction: column;
   background-color: #7285b3;
+  background-image: url("../images/background/backgroundStartGame.svg");
   border-radius: 5px;
   border: 3px solid black;
+
+  width: 94%;
+
+  max-width: 700px;
 }
 .defeatScreen {
   box-sizing: border-box;
@@ -353,6 +384,10 @@ body {
   background-color: #f65c5c;
   border-radius: 5px;
   border: 3px solid black;
+
+  width: 94%;
+
+  max-width: 700px;
 }
 .subtitle {
   margin: 10px;
