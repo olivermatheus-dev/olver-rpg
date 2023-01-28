@@ -18,6 +18,7 @@ class Gameboard {
     this.setupHeroInDisplay();
     removeClass("boardGame", "hidden");
     addClass("modular", "hidden");
+    this.currentStatus();
   }
 
   createMonster() {
@@ -37,25 +38,25 @@ class Gameboard {
       monster.nameMonster;
     document.getElementsByClassName("levelEnemy")[0].innerHTML =
       monster.levelMonster;
-    document.getElementsByClassName("hpRealEnemy")[0].style.width = "99%";
+    document.getElementsByClassName("hpRealEnemy")[0].style.width = "100%";
     document.getElementsByClassName("classEnemy")[0].innerHTML =
       monster.typeMonster;
   }
 
   currentStatus() {
-    // deve atualizar toda vez que houver um ataque mostrando vida atual, ataque base e etc
-    // atualizar também quando subir de nível
+    setInterval(() => {
+      document.getElementsByClassName(
+        "hpRealHeroText"
+      )[0].innerHTML = `${hero.hpHero}/${hero.hpHeroMax}`;
+    }, 100);
   }
 
   setupHeroInDisplay() {
     document.getElementsByClassName("nameHero")[0].innerHTML =
       document.getElementsByClassName("nomeHero")[0].value;
-    document.getElementsByClassName("hpRealHero")[0].style.width = "99%";
+    document.getElementsByClassName("hpRealHero")[0].style.width = "100%";
     document.getElementsByClassName("xpRealHero")[0].style.width = "0%";
     document.getElementsByClassName("levelHero")[0].innerHTML = hero.levelHero;
-    document.getElementsByClassName(
-      "hpRealHeroText"
-    )[0].innerHTML = `${hero.hpHero}/${hero.hpHeroMax}`;
   }
 
   deathConference() {
@@ -106,21 +107,12 @@ class Gameboard {
 
   monsterAction() {
     setTimeout(() => {
-      const rangeMult = [
-        0.7, 0.8, 0.9, 1, 1, 1, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 2, 3,
-      ];
+      const rangeMult = [0.7, 0.8, 0.9, 1, 1, 1, 1, 1, 1, 1, 1.1, 1.2, 1.5];
       let randomMult = rangeMult[Math.floor(Math.random() * rangeMult.length)];
       let monsterDamagetoConvert = monster.baseDamageMonster * randomMult;
       hero.hpHero -= Math.round(monsterDamagetoConvert);
-      let monsterDamageConvert =
-        (+monsterDamagetoConvert * 99) / hero.hpHeroMax;
-      let hpHeroCurrentValue =
-        document.getElementsByClassName("hpRealHero")[0].style.width;
-      let hpHeroNewValue =
-        +hpHeroCurrentValue.slice(0, 2) - monsterDamageConvert;
-      document.getElementsByClassName(
-        "hpRealHero"
-      )[0].style.width = `${hpHeroNewValue}%`;
+      widthStatus(hero.hpHero, hero.hpHeroMax, "hpRealHero"); // função sendo puxada da function.js
+
       document.getElementsByClassName("battleLog")[0].style.background =
         "#d5477a";
       document.getElementsByClassName("textBattleLog")[0].innerHTML = `${
@@ -140,72 +132,34 @@ class Gameboard {
         "rgba(229, 229, 229, 0.5)";
     }, 4000);
     this.deathConferenceHero();
-    document.getElementsByClassName(
-      "hpRealHeroText"
-    )[0].innerHTML = `${hero.hpHero}/${hero.hpHeroMax}`;
   }
 
   heroAttack() {
-    // tentativa de desabilitar botão
-    document
-      .getElementsByClassName(`eventListenerAttack`)[0]
-      .classList.add(`hidden`);
-    document.getElementsByClassName(`btn-attack`)[1].classList.remove(`hidden`);
-    setTimeout(() => {
-      document
-        .getElementsByClassName(`eventListenerAttack`)[0]
-        .classList.remove(`hidden`);
-      document.getElementsByClassName(`btn-attack`)[1].classList.add(`hidden`);
-    }, 2000);
-
-    const rangeMult = [
-      0.8, 0.9, 1, 1, 1, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 2, 3,
-    ];
+    desabilitarAllBtn(); // função está na function.js
+    //multiplicador de ataque abaixo
+    const rangeMult = [0.8, 0.9, 1, 1, 1, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6];
     let randomMult = rangeMult[Math.floor(Math.random() * rangeMult.length)];
     let heroDamagetoConvert = hero.baseDamageHero * randomMult;
     monster.hpMonster -= Math.round(heroDamagetoConvert);
-    console.log("Ataque do herói após multiplicador:" + heroDamagetoConvert);
-    let heroDamageConvert = (+heroDamagetoConvert * 99) / monster.hpMonsterMax;
-    Math.round(heroDamageConvert); // solução
-    console.log("Cálculo de porcentagem a ser tirado:" + heroDamageConvert);
-    let hpEnemyCurrentValue =
-      document.getElementsByClassName("hpRealEnemy")[0].style.width;
-    let hpEnemyNewValue = +hpEnemyCurrentValue.slice(0, 2) - heroDamageConvert;
-    // console.log(hpEnemyNewValue);
-    document.getElementsByClassName(
-      "hpRealEnemy"
-    )[0].style.width = `${hpEnemyNewValue}%`;
+
+    widthStatus(monster.hpMonster, monster.hpMonsterMax, "hpRealEnemy");
+
     document.getElementsByClassName("battleLog")[0].style.background =
       "#44ABE5";
     document.getElementsByClassName("textBattleLog")[0].innerHTML = `${
       hero.nameHero
     } Tirou ${Math.floor(heroDamagetoConvert)} de dano do inimigo`;
-    this.deathConference();
+
     addClass("imageHero", "attackAnimationHero");
     setTimeout(() => {
       removeClass("imageHero", "attackAnimationHero");
     }, 400);
+    this.deathConference();
+    this.deathConferenceHero();
   }
   xpUpHero() {
     hero.currentXp += monster.xpValue;
-    let xpHeroGainConvert = (monster.xpValue * 100) / hero.xpNeedToLevelUp;
-    Math.round(xpHeroGainConvert);
-    let xpCurrentValue =
-      document.getElementsByClassName("xpRealHero")[0].style.width;
-
-    if (xpCurrentValue.length === 3) {
-      let xpNewValue = +xpCurrentValue.slice(0, 2) + xpHeroGainConvert;
-      document.getElementsByClassName(
-        "xpRealHero"
-      )[0].style.width = `${xpNewValue}%`;
-    }
-
-    if (xpCurrentValue.length === 2) {
-      let xpNewValue = +xpCurrentValue.slice(0, 1) + xpHeroGainConvert;
-      document.getElementsByClassName(
-        "xpRealHero"
-      )[0].style.width = `${xpNewValue}%`;
-    }
+    widthStatus(hero.currentXp, hero.xpNeedToLevelUp, "xpRealHero");
     this.levelUp();
   }
   levelUp() {
@@ -219,20 +173,7 @@ class Gameboard {
     // adicionar animação em CSS para subir de nível e uma informação no battle log
   }
   hpRecovey() {
-    document
-      .getElementsByClassName(`eventListenerHpRecovery`)[0]
-      .classList.add(`hidden`);
-    document
-      .getElementsByClassName(`btn-hpRecovery`)[1]
-      .classList.remove(`hidden`);
-    setTimeout(() => {
-      document
-        .getElementsByClassName(`eventListenerHpRecovery`)[0]
-        .classList.remove(`hidden`);
-      document
-        .getElementsByClassName(`btn-hpRecovery`)[1]
-        .classList.add(`hidden`);
-    }, 2000);
+    desabilitarAllBtn();
 
     document.getElementsByClassName(
       "textBattleLog"
@@ -283,20 +224,6 @@ window.addEventListener("load", () => {
     game.hpRecovey();
   });
 });
-
-function addClass(classElement, classToAdd) {
-  document
-    .getElementsByClassName(`${classElement}`)[0]
-    .classList.add(`${classToAdd}`);
-}
-
-function removeClass(classElement, classToRemove) {
-  document
-    .getElementsByClassName(`${classElement}`)[0]
-    .classList.remove(`${classToRemove}`);
-}
-
-// abaixo para pegar o nome digitado e atribuir ao personagem
 
 const nameHeroSelect = document.getElementsByClassName("nomeHero")[0].value;
 const hero = new Hero(`${nameHeroSelect}`);
