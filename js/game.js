@@ -44,6 +44,7 @@ class Gameboard {
   }
 
   currentStatus() {
+    // Atualiza os status do herói e do monstro
     setInterval(() => {
       document.getElementsByClassName(
         "hpRealHeroText"
@@ -54,6 +55,9 @@ class Gameboard {
       document.getElementsByClassName(
         "hpRealEnemyText"
       )[0].innerHTML = `${monster.hpMonster}/${monster.hpMonsterMax}`;
+      document.getElementsByClassName(
+        "rgRealHeroText"
+      )[0].innerHTML = `${hero.rgHero}/${hero.rgHeroMax}`;
     }, 100);
   }
 
@@ -162,8 +166,50 @@ class Gameboard {
     setTimeout(() => {
       removeClass("imageHero", "attackAnimationHero");
     }, 400);
+    hero.rgHero += 10;
+    if (hero.rgHero > hero.rgHeroMax) {
+      hero.rgHero = hero.rgHeroMax;
+    }
     this.deathConference();
     this.deathConferenceHero();
+  }
+  heroSpecialAttack() {
+    desabilitarAllBtn(); // função está na function.js
+    hero.rgHero -= 25;
+    widthStatus(hero.rgHero, hero.rgHeroMax, "rgRealHero");
+    //multiplicador de ataque abaixo
+    const rangeMult = [0.8, 0.9, 1, 1, 1, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6];
+    let randomMult = rangeMult[Math.floor(Math.random() * rangeMult.length)];
+    let heroDamagetoConvert = hero.baseDamageHero * randomMult;
+    monster.hpMonster -= Math.round(heroDamagetoConvert);
+
+    widthStatus(monster.hpMonster, monster.hpMonsterMax, "hpRealEnemy"); // aqui fora para atualizar no primeiro ataque
+
+    addClass("imageHero", "attackAnimationHero"); // 1° animação fora
+    setTimeout(() => {
+      removeClass("imageHero", "attackAnimationHero"); // 2° retira classe da animação
+      randomMult = rangeMult[Math.floor(Math.random() * rangeMult.length)];
+      let heroDamagetoConvert2 = hero.baseDamageHero * randomMult;
+      monster.hpMonster -= Math.round(heroDamagetoConvert);
+      document.getElementsByClassName("battleLog")[0].style.background =
+        "#44ABE5";
+      document.getElementsByClassName("textBattleLog")[0].innerHTML = `${
+        hero.nameHero
+      } Tirou ${Math.floor(
+        heroDamagetoConvert + heroDamagetoConvert2
+      )} de dano do inimigo`;
+    }, 400);
+
+    setTimeout(() => {
+      addClass("imageHero", "attackAnimationHero");
+      widthStatus(monster.hpMonster, monster.hpMonsterMax, "hpRealEnemy"); // aqui dentro para atualizar no segundo ataque
+    }, 800);
+
+    setTimeout(() => {
+      removeClass("imageHero", "attackAnimationHero");
+      this.deathConference();
+      this.deathConferenceHero();
+    }, 1200);
   }
   xpUpHero() {
     hero.currentXp += monster.xpValue;
@@ -188,20 +234,12 @@ class Gameboard {
     )[0].innerHTML = `Você recuperou 30% de vida`;
     document.getElementsByClassName("battleLog")[0].style.background =
       "#44E5BF";
-    let currentHpBar =
-      document.getElementsByClassName("hpRealHero")[0].style.width;
-    currentHpBar = +currentHpBar.slice(0, 2) + 30;
-    if (currentHpBar > 99) {
-      currentHpBar = 99;
-    }
-    document.getElementsByClassName(
-      "hpRealHero"
-    )[0].style.width = `${currentHpBar}%`;
     hero.hpHero = hero.hpHero + hero.hpHeroMax * 0.3;
+
     if (hero.hpHero > hero.hpHeroMax) {
       hero.hpHero = hero.hpHeroMax;
     }
-
+    widthStatus(hero.hpHero, hero.hpHeroMax, "hpRealHero");
     setTimeout(() => {
       document.getElementsByClassName(
         "textBattleLog"
@@ -230,6 +268,15 @@ window.addEventListener("load", () => {
   )[0];
   hpRecoveryBtn.addEventListener("click", () => {
     game.hpRecovey();
+  });
+
+  const specialAttackBtn = document.getElementsByClassName(
+    "eventListenerSpecialAttack"
+  )[0];
+  specialAttackBtn.addEventListener("click", () => {
+    if (hero.rgHero >= 25) {
+      game.heroSpecialAttack();
+    }
   });
 });
 

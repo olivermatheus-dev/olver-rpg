@@ -37,6 +37,13 @@ function desabilitarAllBtn() {
   document
     .getElementsByClassName(`btn-hpRecovery`)[1]
     .classList.remove(`hidden`);
+  // Special Attack abaixo
+  document
+    .getElementsByClassName(`eventListenerSpecialAttack`)[0]
+    .classList.add(`hidden`);
+  document
+    .getElementsByClassName(`btn-specialAttack`)[1]
+    .classList.remove(`hidden`);
   // tudo que deve destrocar aqui dentro do setTimeout()
 
   setTimeout(() => {
@@ -51,6 +58,13 @@ function desabilitarAllBtn() {
       .classList.remove(`hidden`);
     document
       .getElementsByClassName(`btn-hpRecovery`)[1]
+      .classList.add(`hidden`);
+    // Special Attack abaixo
+    document
+      .getElementsByClassName(`eventListenerSpecialAttack`)[0]
+      .classList.remove(`hidden`);
+    document
+      .getElementsByClassName(`btn-specialAttack`)[1]
       .classList.add(`hidden`);
   }, 2000);
 }
