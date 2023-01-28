@@ -439,6 +439,11 @@ body {
   transition: all 0.3s ease-in;
   background-color: #fff314;
 }
+.btn-attack:active {
+  transition: all 0.2s ease-in;
+  scale: 2;
+  background-color: #fff314;
+}
 
 .btn-hpRecovery {
   width: 20%;
@@ -456,6 +461,11 @@ body {
   transition: all 0.3s ease-in;
   background-color: #ff2c2c;
 }
+.btn-hpRecovery:active {
+  transition: all 0.2s ease-in;
+  scale: 2;
+  background-color: #ff2c2c;
+}
 
 .btn-specialAttack {
   width: 20%;
@@ -471,6 +481,11 @@ body {
 }
 .btn-specialAttack:hover {
   transition: all 0.3s ease-in;
+  background-color: rgb(255, 131, 30);
+}
+.btn-specialAttack:active {
+  transition: all 0.2s ease-in;
+  scale: 2;
   background-color: rgb(255, 131, 30);
 }
 
