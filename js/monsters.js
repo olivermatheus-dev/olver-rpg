@@ -349,8 +349,8 @@ class Monster {
     const rangeMult = [0.8, 0.9, 1, 1, 1, 1, 1.1, 1.2, 1.3, 1.4, 2];
     let randomMult = rangeMult[Math.floor(Math.random() * rangeMult.length)];
     let auxMonsterHp = (100 * this.levelMonster * randomMult) / 2;
-    this.hpMonster = auxMonsterHp;
-    this.hpMonsterMax = auxMonsterHp;
+    this.hpMonster = Math.floor(auxMonsterHp);
+    this.hpMonsterMax = Math.floor(auxMonsterHp);
   }
 
   baseDamageMonsterGenerator() {

@@ -414,17 +414,6 @@ body {
   border: 2px solid black;
 }
 
-.btn-attack {
-  width: 20%;
-  height: 3rem;
-  margin: 10px;
-  background-color: #e0c342;
-  border-radius: 5px;
-  font-weight: bold;
-  font-size: 16px;
-  border: 2px solid black;
-  -webkit-appearance: none;
-}
 .iconAttackWarrior {
   width: 25px;
 }
@@ -433,6 +422,22 @@ body {
 }
 .iconSpecialAttack {
   width: 25px;
+}
+.btn-attack {
+  width: 20%;
+  height: 3rem;
+  margin: 10px;
+  background-color: #eec921;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 16px;
+  border: 2px solid black;
+  -webkit-appearance: none;
+  transition: all 0.2s ease-in;
+}
+.btn-attack:hover {
+  transition: all 0.3s ease-in;
+  background-color: #fff314;
 }
 
 .btn-hpRecovery {
@@ -445,7 +450,13 @@ body {
   font-size: 16px;
   border: 2px solid black;
   -webkit-appearance: none;
+  transition: all 0.2s ease-in;
 }
+.btn-hpRecovery:hover {
+  transition: all 0.3s ease-in;
+  background-color: #ff2c2c;
+}
+
 .btn-specialAttack {
   width: 20%;
   height: 3rem;
@@ -456,6 +467,11 @@ body {
   font-size: 16px;
   border: 2px solid black;
   -webkit-appearance: none;
+  transition: all 0.2s ease-in;
+}
+.btn-specialAttack:hover {
+  transition: all 0.3s ease-in;
+  background-color: rgb(255, 131, 30);
 }
 
 /* Tela de inicio */
@@ -509,7 +525,12 @@ body {
   border: 2px solid black;
   border-radius: 5px;
   font-weight: bold;
-  -webkit-appearance: none;
+  transition: all 0.2s ease-in;
+}
+.newGame:hover {
+  transition: all 0.2s ease-in;
+  background-color: #5929c2;
+  transform: scale(1.1);
 }
 
 /*Ativar e desativar inicio do jogo */
