@@ -27,8 +27,23 @@ body {
   block-size: auto;
 }
 
+@media (min-width: 700px) {
+  .backgroundScreen {
+    min-height: 900px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    block-size: auto;
+  }
+}
+
 .boardGame {
-  width: 94%;
+  width: 100%;
+  margin: 0px;
   max-width: 700px;
   height: 650px;
   display: flex;
@@ -38,6 +53,7 @@ body {
   background-position: center;
   border-radius: 5px;
   border: 2px solid black;
+  filter: drop-shadow(16px 25px 10px rgba(0, 0, 0, 0.2));
 }
 
 .enemyBox {
@@ -138,6 +154,19 @@ body {
   padding: 0;
 }
 
+.hpRealEnemyText {
+  display: flex;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+  height: 15px; /*deve ser da mesma altura do margin bottom para ficar centralizado*/
+  margin-bottom: -15px;
+  font-weight: bold;
+}
+
 .avatarEnemy {
   display: flex;
   align-items: center;
@@ -199,7 +228,9 @@ body {
   border-radius: 5px;
   margin: 0;
 }
-
+.name-levelBox {
+  width: 90%;
+}
 .nameBlockHero {
   display: flex;
   align-items: center;
@@ -211,7 +242,6 @@ body {
 }
 
 .nameHero {
-  margin-left: 3px;
 }
 
 .levelBlockHero {
@@ -263,14 +293,28 @@ body {
 
 .hpRealHeroText {
   display: flex;
-  height: 16px;
   width: 100%;
   margin: 0;
   padding: 0;
   justify-content: center;
   align-items: center;
-  z-index: 200;
-  position: absolute;
+  z-index: 20;
+  height: 15px; /*deve ser da mesma altura do margin bottom para ficar centralizado*/
+  margin-bottom: -15px;
+  font-weight: bold;
+}
+
+.xpRealHeroText {
+  display: flex;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+  height: 15px; /*deve ser da mesma altura do margin bottom para ficar centralizado*/
+  margin-bottom: -15px;
+  font-weight: bold;
 }
 
 .avatarHero {

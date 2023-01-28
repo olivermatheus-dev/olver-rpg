@@ -8,6 +8,7 @@ class Hero {
     this.currentXp = 0;
     this.xpNeedToLevelUp = 0;
     this.coinsTotal = 10;
+    this.imageAttackBtn = 0;
   }
   startHero() {
     this.hpHeroGenerator();

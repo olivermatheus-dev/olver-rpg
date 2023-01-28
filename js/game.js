@@ -48,6 +48,12 @@ class Gameboard {
       document.getElementsByClassName(
         "hpRealHeroText"
       )[0].innerHTML = `${hero.hpHero}/${hero.hpHeroMax}`;
+      document.getElementsByClassName(
+        "xpRealHeroText"
+      )[0].innerHTML = `${hero.currentXp}/${hero.xpNeedToLevelUp}`;
+      document.getElementsByClassName(
+        "hpRealEnemyText"
+      )[0].innerHTML = `${monster.hpMonster}/${monster.hpMonsterMax}`;
     }, 100);
   }
 
