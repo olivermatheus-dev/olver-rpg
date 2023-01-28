@@ -328,7 +328,7 @@ body {
 }
 
 .btn-attack {
-  width: 8rem;
+  width: 20%;
   height: 3rem;
   margin: 10px;
   background-color: #e0c342;
@@ -338,9 +338,15 @@ body {
   border: 2px solid black;
   -webkit-appearance: none;
 }
+.iconAttackWarrior {
+  width: 25px;
+}
+.iconHpRecovery {
+  width: 22px;
+}
 
 .btn-hpRecovery {
-  width: 8rem;
+  width: 20%;
   height: 3rem;
   margin: 10px;
   background-color: #e04242;

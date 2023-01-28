@@ -15,6 +15,7 @@ class Monster {
     this.baseDamageMonster = 0;
     this.xpValue = 0;
     this.imageMonster = 0;
+    this.coinsValue = 0;
   }
 
   startMonster(levelHero) {
@@ -23,7 +24,7 @@ class Monster {
     this.levelGenerator(levelHero);
     this.hpMonsterGenerator();
     this.baseDamageMonsterGenerator();
-    this.xpValueGenerator();
+    this.xpCoinValueGenerator();
   }
 
   typeMonsterGenerator() {
@@ -359,11 +360,12 @@ class Monster {
     this.baseDamageMonster = auxMonsterDamage;
   }
 
-  xpValueGenerator() {
+  xpCoinValueGenerator() {
     const rangeMult = [0.8, 0.9, 1, 1, 1, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6];
     let randomMult = rangeMult[Math.floor(Math.random() * rangeMult.length)];
     let auxXpValueGenerator = (20 * this.levelMonster * randomMult) / 2;
     this.xpValue = auxXpValueGenerator;
+    this.coinsValue = Math.floor(auxXpValueGenerator / 2);
   }
 }
 // ao instanciar o monstro aqui, não preciso de puxar ele para dentro do constructor

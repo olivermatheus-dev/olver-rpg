@@ -65,15 +65,17 @@ class Gameboard {
       document.getElementsByClassName(
         "textBattleLog"
       )[0].innerHTML = `Você venceu, estamos procurando um novo inimigo`;
-      this.xpUpHero();
+
       setTimeout(() => {
         this.createMonster();
         document.getElementsByClassName(
           "textBattleLog"
         )[0].innerHTML = `Escolha uma ação`;
       }, 3000);
-      this.quantityMonsterDefeat += 1;
-      this.xpAcumulado += monster.xpValue;
+      this.xpUpHero(); // aumenta o xp atual do personagem
+      hero.coinsTotal += monster.coinsValue;
+      this.quantityMonsterDefeat += 1; // aumenta a quantidade de monstros mortos para calcular a pontuação final
+      this.xpAcumulado += monster.xpValue; // soma a quantidade total de xp recebido para calcular a pontuação final
     } else {
       this.monsterAction();
     }
