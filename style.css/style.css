@@ -3,7 +3,9 @@
   margin: 0px;
   block-size: auto;
   font-family: "Lora", "Inter", sans-serif;
+  font-family: "Inter", sans-serif;
   cursor: url(../images/cursor/cursor1.svg), default;
+  color: #2c2c3f;
 }
 
 div {
@@ -91,8 +93,21 @@ body {
 }
 
 .nameEnemy {
-  margin-left: 3px;
+  margin-left: 34rv2, 0px;
+  /* font-size: 1.5rem; */
 }
+
+.class-level {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  height: 15%;
+  margin: 0px;
+
+  border-radius: 5px;
+}
+
 .marginRigthText {
   margin-right: 0px;
 }
@@ -100,22 +115,20 @@ body {
 .classBlockEnemy {
   display: flex;
   align-items: center;
-  width: 90%;
-  height: 15%;
+  justify-content: center;
+  width: 60%;
+  height: 100%;
   margin: 0px;
   background: #47d5a3;
   border-radius: 5px;
 }
 
-.classEnemy {
-  margin-left: 3px;
-}
-
 .levelBlockEnemy {
   display: flex;
   align-items: center;
-  width: 90%;
-  height: 15%;
+  justify-content: center;
+  width: 30%;
+  height: 90%;
   margin: 0px;
   background: #7285b3;
   border-radius: 5px;
@@ -125,6 +138,45 @@ body {
   display: flex;
   align-items: center;
 }
+
+.type-power {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  height: 15%;
+  margin: 0px;
+
+  border-radius: 5px;
+}
+
+.typeBlockEnemy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  height: 100%;
+  margin: 0px;
+  background: #eba638;
+  border-radius: 5px;
+}
+
+.powerBlockEnemy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+  height: 90%;
+  margin: 0px;
+  background: #f50e0e;
+  border-radius: 5px;
+}
+
+.powerEnemy {
+  display: flex;
+  align-items: center;
+}
+
 .hpEnemy {
   display: flex;
   align-items: center;
@@ -529,9 +581,36 @@ body {
 
   max-width: 700px;
 }
-.subtitle {
-  margin: 10px;
+.logotipo {
+  max-width: 40%;
+  min-width: 40%;
+  padding-bottom: 15px;
+  padding-top: 100px;
 }
+
+.titleRPG {
+  font-weight: 400;
+}
+.descriptionGame {
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+.subtitle {
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+.copyright {
+  padding-top: 100px;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
 .newGame {
   margin-top: 10px;
   width: 40%;

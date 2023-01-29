@@ -16,6 +16,7 @@ class Hero {
     this.hpHeroGenerator();
     this.xpNeedToLevelUpGenerator();
     this.baseDamageHeroGenerator();
+    this.currentXp = 0;
   }
   hpHeroGenerator() {
     let auxHeroHp = (120 * this.levelHero) / 2;

@@ -11,15 +11,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css/style.css" />
-    <title>RPG</title>
+    <title>Olver Rpg</title>
   </head>
   <body>
     <div class="backgroundScreen">
       <div class="modular">
-        <h1 class="titleRPG">RPG Adventure</h1>
-        <p class="subtitle">
-          Escolha um nome para o seu personagem e divirta-se
+        <img src="/images/sistem-images/logotipo.svg" alt="" class="logotipo" />
+        <!-- <h1 class="titleRPG">OLVER RPG</h1> -->
+        <p class="descriptionGame">
+          Enfrente desde monstros simples até deuses em sua jornada
         </p>
+        <p class="subtitle">Dê um nome ao seu herói e inicie sua joronada</p>
         <form action="">
           <div>
             <label for="nome">Nome:</label>
@@ -27,6 +29,7 @@
           </div>
         </form>
         <button class="newGame">New Game</button>
+        <p class="copyright">© Todos os direitos reservados</p>
       </div>
       <div class="defeatScreen hidden">
         <h1 class="defeatText">Defeat</h1>
@@ -42,17 +45,25 @@
         <div class="enemyBox">
           <div class="statusEnemy">
             <div class="statusEnemyBox border1">
-              <div class="nameBlockEnemy border1">
+              <div class="nameBlockEnemy">
                 <div class="nameEnemyText marginRigthText"></div>
                 <div class="nameEnemy">Nome do Monstro</div>
               </div>
-              <div class="classBlockEnemy border1">
-                <div class="classEnemyText marginRigthText">Classe:</div>
-                <div class="classEnemy">Classe do Monstro</div>
+              <div class="class-level">
+                <div class="classBlockEnemy border1">
+                  <div class="classEnemy">Classe do Monstro</div>
+                </div>
+                <div class="levelBlockEnemy border1">
+                  <div class="levelEnemy">15</div>
+                </div>
               </div>
-              <div class="levelBlockEnemy border1">
-                <div class="levelEnemyText">Level:</div>
-                <div class="levelEnemy">15</div>
+              <div class="type-power">
+                <div class="typeBlockEnemy border1">
+                  <div class="typeEnemy">Lendário</div>
+                </div>
+                <div class="powerBlockEnemy border1">
+                  <div class="powerEnemy">1955</div>
+                </div>
               </div>
 
               <div class="hpEnemy">

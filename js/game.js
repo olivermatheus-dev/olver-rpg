@@ -58,6 +58,9 @@ class Gameboard {
       document.getElementsByClassName(
         "rgRealHeroText"
       )[0].innerHTML = `${hero.rgHero}/${hero.rgHeroMax}`;
+      widthStatus(hero.hpHero, hero.hpHeroMax, "hpRealHero");
+      widthStatus(hero.rgHero, hero.rgHeroMax, "rgRealHero");
+      widthStatus(hero.currentXp, hero.xpNeedToLevelUp, "xpRealHero");
     }, 100);
   }
 
