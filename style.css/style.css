@@ -71,24 +71,38 @@ body {
   width: 45%;
 }
 .statusEnemyBox {
-  background: rgba(145, 163, 190, 0.5);
   display: flex;
   flex-direction: column;
   width: 90%;
   height: 85%;
-  align-items: center;
-  justify-content: space-around;
-  border-radius: 5px;
+
+  justify-content: center;
   margin: 0px;
+  background: #eaeaea;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px 50px;
+}
+
+.descriptionBlockEnemy {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  width: 83%;
+  height: 15%;
+  margin: 0px;
+  border-radius: 5px;
+  font-style: italic;
+  font-size: 12px;
 }
 
 .nameBlockEnemy {
   display: flex;
   align-items: center;
-  width: 90%;
+  justify-content: left;
+  width: 83%;
   height: 15%;
   margin: 0px;
-  background: #d5477a;
+  font-size: 26px;
   border-radius: 5px;
 }
 
@@ -115,23 +129,33 @@ body {
 .classBlockEnemy {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 60%;
-  height: 100%;
+  justify-content: left;
+  width: 83%;
+  height: 15%;
   margin: 0px;
-  background: #47d5a3;
+  margin-left: 10px;
   border-radius: 5px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.line {
+  height: 1px;
+  width: 70%;
+  background-color: #080707;
+  margin: 3px;
+  margin-left: 18px;
 }
 
 .levelBlockEnemy {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 30%;
-  height: 90%;
+  width: 40%;
+  height: 15%;
   margin: 0px;
-  background: #7285b3;
+  margin-left: 5px;
   border-radius: 5px;
+  font-size: 14px;
 }
 
 .levelEnemy {
@@ -139,26 +163,25 @@ body {
   align-items: center;
 }
 
-.type-power {
+.statusPart2 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 90%;
+  width: 83%;
   height: 15%;
   margin: 0px;
-
-  border-radius: 5px;
+  margin-left: 5px;
+  font-size: 14px;
 }
 
 .typeBlockEnemy {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
+  margin-left: 5px;
   width: 60%;
   height: 100%;
   margin: 0px;
-  background: #eba638;
-  border-radius: 5px;
 }
 
 .powerBlockEnemy {
@@ -168,7 +191,7 @@ body {
   width: 30%;
   height: 90%;
   margin: 0px;
-  background: #f50e0e;
+
   border-radius: 5px;
 }
 
@@ -180,11 +203,11 @@ body {
 .hpEnemy {
   display: flex;
   align-items: center;
-  width: 100%;
+  width: 80%;
   height: 20px;
   margin: 5px;
   margin-bottom: 0px;
-  margin-top: 0px;
+  margin-top: 15px;
 }
 
 .textHP {
@@ -224,6 +247,7 @@ body {
   align-items: center;
   justify-content: center;
   width: 45%;
+  flex-direction: column;
 }
 
 .imageMonster {
@@ -311,7 +335,7 @@ body {
 .hpHero {
   display: flex;
   align-items: center;
-  width: 100%;
+  width: 80%;
   margin: 5px;
   margin-bottom: 0px;
   margin-top: 0px;
@@ -320,6 +344,7 @@ body {
 
 .textHp {
   margin-right: -5px;
+  color: #d5dded;
 }
 .textRg {
   margin-right: -5px;
@@ -414,6 +439,7 @@ body {
 
 .avatarHero {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 45%;

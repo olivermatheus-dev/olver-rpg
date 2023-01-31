@@ -41,6 +41,10 @@ class Gameboard {
     document.getElementsByClassName("hpRealEnemy")[0].style.width = "100%";
     document.getElementsByClassName("classEnemy")[0].innerHTML =
       monster.typeMonster;
+    document.getElementsByClassName("rarityEnemy")[0].innerHTML =
+      monster.rarityMonster;
+    document.getElementsByClassName("powerEnemy")[0].innerHTML =
+      monster.powerMonster;
   }
 
   currentStatus() {
