@@ -1,9 +1,13 @@
-# RPG Adventure
+# Olver RPG
 
 O jogo RPG Adventure foi desenvolvido com o objetivo de gerar entretenimento para as mais diversas idades, composto por uma série de batalhas com monstros únicos o jogo te desafia a conseguir chegar ao nível mais alto possível.
 
 **Para jogar, acesse:** [Rpg Adventure](https://olivermnoo.github.io/rpg-adventure/)
 **Para ver uma apresentação em slides do projeto:** [Slides da Apresentação](https://www.canva.com/design/DAFYzO2Mt2M/fsVmNyuY94l1ewCsrFA1nA/view?utm_content=DAFYzO2Mt2M&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+
+## Tecnologias Utilizadas no Projeto
+
+Para esse projeto foram utilizadas apenas JavaScript, HTML5 e CSS3.
 
 ## Como jogar:
 
@@ -70,10 +74,6 @@ Ao morrer o jogador tem acesso a pontuação obtida nessa jogatina, essa pontua�
 - Nível alcançado pelo Herói
 - Quantidade de Monstros derrotados
 - XP total acumulado durante a jogatina
-
-## Tecnologias Utilizadas no Projeto
-
-Para esse projeto foram utilizadas apenas JavaScript, HTML e CSS. Nenhum framework foi utilizado na criação do projeto.
 
 ## Design e ilustrações
 
