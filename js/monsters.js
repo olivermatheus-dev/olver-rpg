@@ -7,8 +7,7 @@ class Monster {
     // this.baseDamageMonster = baseDamageMonster();
     // this.xpValue = xpValueGenerator();
     // this.imageMonster = 0;
-    this.typeMonster = "Draco";
-    this.rarityMonster = "Common";
+    this.typeMonster = 0;
     this.nameMonster = 0;
     this.levelMonster = 0;
     this.hpMonster = 0;
@@ -17,97 +16,38 @@ class Monster {
     this.xpValue = 0;
     this.imageMonster = 0;
     this.coinsValue = 0;
-    this.descriptionMonster = "Monstro Comum";
-    this.powerMonster = 0;
   }
 
   startMonster(levelHero) {
-    this.rarityMonsterRandom();
-    this.typeMonsterGenerator(); // para os lendários, aqui já define o nome dele
-    if (this.typeMonster === "Common") {
-      this.nameGenerator();
-    }
+    this.typeMonsterGenerator();
+    this.nameGenerator();
     this.levelGenerator(levelHero);
     this.hpMonsterGenerator();
     this.baseDamageMonsterGenerator();
     this.xpCoinValueGenerator();
-    // chamar a função que muda os parametros dos lendários e épicos
-    this.epicAndLegendarySet();
-    this.powerMonsterCalc();
-  }
-
-  rarityMonsterRandom() {
-    const rarityMonsters = ["Legendary"];
-    let randomRarity =
-      rarityMonsters[Math.floor(Math.random() * rarityMonsters.length)];
-
-    this.rarityMonster = randomRarity;
   }
 
   typeMonsterGenerator() {
     /* aqui teremos uma array de tipos de monstros, o objetivo dessa
     função é apenas sortear um typeMonster aleatório e reatribuir ao this.typeMonster*/
-    // no caso dele ser comum, aqui definiremos só o tipo dele para depois randomizar os nomes
-    if (this.rarityMonster === "Common") {
-      const typesMonsters = [
-        "Draco",
-        "Orc",
-        "Druid",
-        "Thief",
-        "Elf",
-        "Witcher",
-        "Hunter",
-        "Monk",
-        "Scientist",
-        "Explorer",
-        "Samurai",
-        "Paladin",
-      ];
-      let randomElement =
-        typesMonsters[Math.floor(Math.random() * typesMonsters.length)];
+    const typesMonsters = [
+      "Draco",
+      "Orc",
+      "Druid",
+      "Thief",
+      "Elf",
+      "Witcher",
+      "Hunter",
+      "Monk",
+      "Scientist",
+      "Explorer",
+      "Samurai",
+      "Paladin",
+    ];
+    let randomElement =
+      typesMonsters[Math.floor(Math.random() * typesMonsters.length)];
 
-      this.typeMonster = randomElement;
-    }
-
-    // no caso dele ser épico, aqui já definiremos o nome dele
-    if (this.rarityMonster === "Epic") {
-      const epicMonsters = ["Mulan", "Sun-Tzu"];
-    }
-
-    // No caso dele ser lendário, já definiremos o nome dele aqui
-    if (this.rarityMonster === "Legendary") {
-      const legendaryMonsters = [
-        "Athena",
-        // "Hercules",
-        // "Ares",
-        // "Zeus",
-        // "Poseidon",
-        // "Hades",
-        // "Persefone",
-        // "Hera",
-        // "Aphrodite",
-        // "Artemis",
-        // "Dionysus",
-        // "Apollo",
-        // "Themis",
-      ];
-      let randomMonster =
-        legendaryMonsters[Math.floor(Math.random() * legendaryMonsters.length)];
-
-      this.nameMonster = randomMonster;
-    }
-  }
-
-  epicAndLegendarySet() {
-    if (this.nameMonster === "Athena") {
-      this.typeMonster = "Greek Goddess";
-      this.hpMonster = Math.floor(this.hpMonster * 1.4);
-      this.hpMonsterMax = Math.floor(this.hpMonsterMax * 1.4);
-      this.baseDamageMonster = Math.floor(this.baseDamageMonster * 1.2);
-      this.xpValue *= 1.5;
-      this.imageMonster = "athena.svg";
-      this.descriptionMonster = "Sabedoria e Estratégia";
-    }
+    this.typeMonster = randomElement;
   }
 
   nameGenerator() {
@@ -406,7 +346,7 @@ class Monster {
   }
 
   hpMonsterGenerator() {
-    const rangeMult = [0.8, 0.9, 1, 1, 1, 1, 1.1, 1.2];
+    const rangeMult = [0.8, 0.9, 1, 1, 1, 1, 1.1, 1.2, 1.3, 1.4, 2];
     let randomMult = rangeMult[Math.floor(Math.random() * rangeMult.length)];
     let auxMonsterHp = (100 * this.levelMonster * randomMult) / 2;
     this.hpMonster = Math.floor(auxMonsterHp);
@@ -414,7 +354,7 @@ class Monster {
   }
 
   baseDamageMonsterGenerator() {
-    const rangeMult = [0.8, 0.9, 1, 1, 1, 1, 1.1, 1.2];
+    const rangeMult = [0.8, 0.9, 1, 1, 1, 1, 1.1, 1.2, 1.3, 1.4, 2];
     let randomMult = rangeMult[Math.floor(Math.random() * rangeMult.length)];
     let auxMonsterDamage = (25 * this.levelMonster * randomMult) / 2;
     this.baseDamageMonster = auxMonsterDamage;
@@ -426,9 +366,6 @@ class Monster {
     let auxXpValueGenerator = (20 * this.levelMonster * randomMult) / 2;
     this.xpValue = auxXpValueGenerator;
     this.coinsValue = Math.floor(auxXpValueGenerator / 2);
-  }
-  powerMonsterCalc() {
-    this.powerMonster = (this.baseDamageMonster + this.hpMonsterMax) * 2;
   }
 }
 // ao instanciar o monstro aqui, não preciso de puxar ele para dentro do constructor
